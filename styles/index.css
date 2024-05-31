@@ -4,6 +4,7 @@ body{
    font-family: "Poppins", sans-serif; 
    height: 100vh;
    background-color: #d7e1e4;
+   line-height: 1.5;
 }
 
 .container{
@@ -12,8 +13,9 @@ body{
     margin: 10%;
     padding: 5%;
     border-radius: 2rem;
-    width: 60%;
-    height: 60%;
+    height: fit-content;
+    /* width: 60%;
+    height: 60%; */
 }
 
 .title{
@@ -22,6 +24,7 @@ body{
     font-size: 30px;
 }
 
+/* Game header style */
 .title span{
     color: #eff5f6;
 }
@@ -41,4 +44,18 @@ body{
 .reset_game:hover{
     text-decoration: underline;
     color: #293436;
+}
+
+/* Game board/cells style */
+.game_board{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 2%;
+}
+
+.cell{
+    height: 6rem;
+    width: 6rem;
+    background-color: bisque;
 }
