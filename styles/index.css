@@ -32,7 +32,7 @@ body{
 .game_status{
     display: flex;
     justify-content: space-around;
-    font-size: 20px;
+    font-size: 16px;
     margin: 3% 0;
     color: #eff5f6;
 }
