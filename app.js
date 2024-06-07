@@ -1,7 +1,6 @@
 const gameStatus = document.querySelector('.player');
 const resetGame = document.querySelector('.reset_game');
 const gameCells = document.querySelector('.cell');
-
 const squares = Array.from(document.querySelectorAll('#board div'));
 const messages = document.querySelector('.message');
 let board;
@@ -10,13 +9,20 @@ let win;
 let gameActive = true;
 
 document.getElementById('board').addEventListener('click', handleTurn);
-
+resetGame.addEventListener('click', handleResetButton);
 
 function handleTurn(event){
+    if(!gameActive){
+        return;
+    };
+
     let idx = squares.findIndex(function(square){
         return square === event.target;
     });
     
+    if (board[idx] !== '' || win){
+        return;
+    };
 
     board[idx] = turn;
     if(turn === 'X'){
@@ -25,6 +31,7 @@ function handleTurn(event){
         turn='X'
     };
 
+    win=getWinner();
     render();
 
 };
@@ -52,6 +59,7 @@ function getWinner(){
     };
 
     if (winner) {
+        gameActive=false;
         return winner 
       } else if (board.includes('')) {
         return null // if there's an empty space, return null (no winner yet)
@@ -78,6 +86,10 @@ function init (){
         "","","",
     ];
 
+    turn="X";
+    win=null;
+    gameActive=true;
+
     render();
 };
 
@@ -87,28 +99,3 @@ init();
 function handleResetButton (){
     init();
 }
-
-
-// let gameIsAlive = true;
-// let xIsNext = true;
-
-// const handleReset = (e) => {
-//     console.log(e);
-// };
-
-// const handleCellClick = (e) => {
-//     const location = e.target.classList[1];
-//     if (xIsNext){
-//         e.target.classList.add('x');
-//         xIsNext =!xIsNext;
-//     }else {
-//         e.target.classList.add('o');
-//         xIsNext = !xIsNext;
-//     }
-// };
-
-// for(const gameCell of gameCells){
-//     gameCell.addEventListener('click', handleCellClick)
-// }
-
-// resetGame.addEventListener('click', handleReset);
