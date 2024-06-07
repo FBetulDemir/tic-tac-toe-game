@@ -14,8 +14,6 @@ body{
     padding: 5%;
     border-radius: 2rem;
     height: fit-content;
-    /* width: 60%;
-    height: 60%; */
 }
 
 .title{
@@ -30,20 +28,39 @@ body{
 }
 
 .game_status{
-    display: flex;
-    justify-content: space-around;
-    font-size: 16px;
-    margin: 3% 0;
+    text-align: center;
+    font-size: 14px;
+    margin: 5% 0;
     color: #eff5f6;
+}
+
+.game_status h2{
+    margin-top: 12%;
 }
 
 .reset_game{
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    padding: 3% 5%;
+    outline: none;
+    color: #fff;
+    background-color: #3f6c7a;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px #494949;
+    letter-spacing: 2px;
+}
+
+.reset_game span{
+    margin: 2% 3%;
+    font-size: 16px;
 }
 
 .reset_game:hover{
     text-decoration: underline;
-    color: #293436;
+    background-color: #293436;
+    transition: 2s;
 }
 
 /* Game board/cells style */

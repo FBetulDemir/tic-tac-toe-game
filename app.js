@@ -1,4 +1,3 @@
-const gameStatus = document.querySelector('.player');
 const resetGame = document.querySelector('.reset_game');
 const gameCells = document.querySelector('.cell');
 const squares = Array.from(document.querySelectorAll('#board div'));
@@ -10,6 +9,7 @@ let gameActive = true;
 
 document.getElementById('board').addEventListener('click', handleTurn);
 resetGame.addEventListener('click', handleResetButton);
+
 
 function handleTurn(event){
     if(!gameActive){
@@ -64,7 +64,8 @@ function getWinner(){
       } else if (board.includes('')) {
         return null // if there's an empty space, return null (no winner yet)
       } else {
-        return 'T' // no winner and no empty spaces? That's a tie!
+        gameActive = false;
+        return 'T' // no winner and no empty spaces. That's a tie!
       };
     
 };
@@ -74,7 +75,13 @@ function render (){
     board.forEach(function(cell, idx){
         squares[idx].textContent = cell;
     });
-    messages.textContent = win ? `${win} wins the game!` : `It's ${turn}'s turn!`;
+    
+
+    if(win){
+        messages.textContent = win=== 'T'? "No winner!" : `${win} wins the game!` ;
+    }else {
+        messages.textContent = `It's ${turn}'s turn!`;
+    }
 
 };
 
